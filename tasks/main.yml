@@ -8,14 +8,14 @@
 
 - name: Pull image
   docker_image:
-    name: dariazhdanovadev/cicd-exam-images:22
+    name: {{ image_name }}:{{ image_tag }}
     source: pull
     state: present
 
 - name: Run containers
   docker_container:
     name: "{{ item.key }}"
-    image: dariazhdanovadev/cicd-exam-images:22
+    image: {{ image_name }}:{{ image_tag }}
     published_ports:
       - "{{ item.value }}:5000"
     hostname: "{{ item.key }}"
