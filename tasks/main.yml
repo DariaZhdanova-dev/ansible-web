@@ -12,14 +12,14 @@
 
 - name: Pull image
   docker_image:
-    name: {{ image_name }}:{{ image_tag }}
+    name: "{{ image_name }}:{{ image_tag }}"
     source: pull
     state: present
 
 - name: Run containers
   docker_container:
     name: "{{ item.key }}"
-    image: {{ image_name }}:{{ image_tag }}
+    image: "{{ image_name }}:{{ image_tag }}"
     published_ports:
       - "{{ item.value }}:5000"
     hostname: "{{ item.key }}"
