@@ -6,6 +6,10 @@
     username: "{{ login }}"
     password: "{{ password }}"
 
+- name: Get image tag
+  debug:
+    var: image_tag
+
 - name: Pull image
   docker_image:
     name: {{ image_name }}:{{ image_tag }}
@@ -26,3 +30,5 @@
     restart_policy: always
     cleanup: true
   loop: "{{ servers | dict2items }}"
+
+  
